@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f; //Range of the ground check
     public LayerMask groundMask; //Checks whether a certain layer has been made contact with
 
-    Vector3 velocity; //Velocity of the Player falling
+    public Vector3 velocity; //Velocity of the Player falling
     bool isGrounded; //Bool for whether the Player is currently on the ground
     void Start()
     {
@@ -57,17 +57,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButton("Sprint") && isGrounded)
         {
             speed = 12f;
-            Debug.Log("Sprint");
         }
         else if (Input.GetButton("Sprint") && Input.GetButton("Jump"))
         {
             speed = 12f;
-            Debug.Log("Sprint Jump");
         }
         else if (isGrounded)
         {
             speed = 5f;
-            Debug.Log("Walk"); 
         }
 
         /*Shrinks the Player upon crouching*/
