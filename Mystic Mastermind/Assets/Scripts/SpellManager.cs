@@ -26,10 +26,16 @@ public class SpellManager : MonoBehaviour
     public Material recharge; //Recharge Gem Material
     private int qRecharge = 5;
     private int eRecharge = 5;
+
+    public GameObject lookDirection; //The Object of which the RayCast will come from
+    int layerMask = 1 << 8; //The Layer that the RayCast should make contact with
+    RaycastHit hit; //The Raycast
+    public GameObject pillar; //Earth Pillar Spell Object
+
     void Start()
     {
         qSpellNum = 0;
-        eSpellNum = 0;
+        eSpellNum = 1;
         qImage.sprite = icons[qSpellNum];
         eImage.sprite = icons[eSpellNum];
         qName.text = spells[qSpellNum].spellName;
@@ -38,6 +44,8 @@ public class SpellManager : MonoBehaviour
         eGem.GetComponent<MeshRenderer>().material = spells[eSpellNum].colour;
         qCastable = true;
         eCastable = true;
+
+        pillar.SetActive(false); 
     }
 
 
@@ -59,7 +67,7 @@ public class SpellManager : MonoBehaviour
 
                 while (qSelectSpell == false)
                 {
-                    if (spells[qSpellNum].isDisabled == true)
+                    if (spells[qSpellNum].isDisabled == true || spells[qSpellNum].spellName == spells[eSpellNum].spellName)
                     {
                         if ((qSpellNum + 1) > spells.Length - 1)
                         {
@@ -97,7 +105,7 @@ public class SpellManager : MonoBehaviour
 
                 while (eSelectSpell == false)
                 {
-                    if (spells[eSpellNum].isDisabled == true)
+                    if (spells[eSpellNum].isDisabled == true || spells[eSpellNum].spellName == spells[qSpellNum].spellName)
                     {
                         if ((eSpellNum + 1) > spells.Length - 1)
                         {
@@ -135,6 +143,24 @@ public class SpellManager : MonoBehaviour
             spells[eSpellNum].CastSpell();
 
             InvokeRepeating("EStartRecharge", 0, 1);
+        }
+
+        if (eName.text == "Earth" || qName.text == "Earth")
+        {
+            if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask))
+            {
+                pillar.SetActive(true);
+                pillar.transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+                pillar.transform.position = hit.point;
+            }
+            else
+            {
+                pillar.SetActive(false);
+            }
+        }
+        else
+        {
+            pillar.SetActive(false);
         }
     }
 
