@@ -26,6 +26,7 @@ public class WindSpell : BaseSpell
     /*This method manages what occurs when the Spell is selected and Cast*/
     public override void CastSpell()
     {
+        player.PlayOneShot(soundEffect, 1);
         playerMovement.velocity.y = Mathf.Sqrt(jumpBoost * -2f * gravity);
         windEffect.Play();
     }

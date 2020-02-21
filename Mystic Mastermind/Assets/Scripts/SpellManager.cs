@@ -32,6 +32,10 @@ public class SpellManager : MonoBehaviour
     RaycastHit hit; //The Raycast
     public GameObject pillar; //Earth Pillar Spell Object
 
+    public AudioSource player; //AudioSource to use
+    public AudioClip rechargeSound; //Sound Effect to play upon use
+    public AudioClip changeSound; //Sound Effect to play upon use
+
     void Start()
     {
         qSpellNum = 0;
@@ -83,7 +87,7 @@ public class SpellManager : MonoBehaviour
                         qSelectSpell = true;
                     }
                 }
-
+                player.PlayOneShot(changeSound, 1);
                 qImage.sprite = icons[qSpellNum];
                 qName.text = spells[qSpellNum].spellName;
                 qGem.GetComponent<MeshRenderer>().material = spells[qSpellNum].colour;
@@ -121,7 +125,7 @@ public class SpellManager : MonoBehaviour
                         eSelectSpell = true;
                     }
                 }
-
+                player.PlayOneShot(changeSound, 1);
                 eImage.sprite = icons[eSpellNum];
                 eName.text = spells[eSpellNum].spellName;
                 eGem.GetComponent<MeshRenderer>().material = spells[eSpellNum].colour;
@@ -176,6 +180,7 @@ public class SpellManager : MonoBehaviour
             qCastable = true;
             qGem.GetComponent<MeshRenderer>().material = spells[qSpellNum].colour;
             CancelInvoke("QStartRecharge");
+            player.PlayOneShot(rechargeSound, 1);
         }
     }
 
@@ -191,6 +196,7 @@ public class SpellManager : MonoBehaviour
             eCastable = true;
             eGem.GetComponent<MeshRenderer>().material = spells[eSpellNum].colour;
             CancelInvoke("EStartRecharge");
+            player.PlayOneShot(rechargeSound, 1);
         }
     }
 }

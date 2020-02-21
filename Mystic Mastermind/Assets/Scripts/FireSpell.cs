@@ -20,6 +20,7 @@ public class FireSpell : BaseSpell
     /*This method manages what occurs when the Spell is selected and Cast*/
     public override void CastSpell()
     {
+        player.PlayOneShot(soundEffect, 1);
         Instantiate(Fireball, lookDirection.transform.position, lookDirection.transform.rotation);  
     }
 }

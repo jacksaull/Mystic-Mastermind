@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CleanUp : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public AudioSource player; //AudioSource to use
+    public AudioClip soundEffect; //Sound Effect to play upon use
     void Start()
     {
+        player.PlayOneShot(soundEffect, 1);
         Invoke("Clean", 1);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
