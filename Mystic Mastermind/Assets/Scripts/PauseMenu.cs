@@ -66,4 +66,10 @@ public class PauseMenu : MonoBehaviour
         main.gameObject.SetActive(false);
         sound.gameObject.SetActive(true);
     }
+
+    public void QuitSound()
+    {
+        main.gameObject.SetActive(true);
+        sound.gameObject.SetActive(false);
+    }
 }
