@@ -12,6 +12,7 @@ public class SpellManager : MonoBehaviour
     private bool eSelectSpell; //Checks whether Spell can be selected
     private bool qCastable; //Whether Q Spell can be Cast
     private bool eCastable; //Whether E Spell can be Cast
+    public bool paused; //Check is game is paused
 
     public Image qImage; //Icon for Spell in the Q slot
     public Image eImage; //Icon for Spell in the E slot
@@ -49,13 +50,15 @@ public class SpellManager : MonoBehaviour
         qCastable = true;
         eCastable = true;
 
+        paused = false;
+
         pillar.SetActive(false); 
     }
 
 
     void Update()
     {
-        if (qCastable == true)
+        if (qCastable == true && paused == false)
         {
             if (Input.GetButtonDown("Q Spell"))
             {
@@ -93,7 +96,7 @@ public class SpellManager : MonoBehaviour
                 qGem.GetComponent<MeshRenderer>().material = spells[qSpellNum].colour;
             }
         }
-        if (eCastable == true)
+        if (eCastable == true && paused == false)
         {
             if (Input.GetButtonDown("E Spell"))
             {
@@ -132,7 +135,7 @@ public class SpellManager : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Cast Primary") && qCastable == true)
+        if (Input.GetButtonDown("Cast Primary") && qCastable == true && paused == false)
         {
             qCastable = false;
             qGem.GetComponent<MeshRenderer>().material = recharge;
@@ -140,7 +143,7 @@ public class SpellManager : MonoBehaviour
 
             InvokeRepeating("QStartRecharge", 0, 1);
         }
-        if (Input.GetButtonDown("Cast Secondary") && eCastable == true)
+        if (Input.GetButtonDown("Cast Secondary") && eCastable == true && paused == false)
         {
             eCastable = false;
             eGem.GetComponent<MeshRenderer>().material = recharge;
