@@ -23,7 +23,7 @@ public class EarthSpell : BaseSpell
     /*This method manages what occurs when the Spell is selected and Cast*/
     public override void CastSpell()
     {
-        if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask) && hit.collider.gameObject.name != "Pillar")
+        if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask) && hit.collider.gameObject.name == "Dirt")
         {
             //Debug.DrawRay(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward) * hit.distance, Color.green, 10.0f);
             //Debug.DrawRay(hit.point, hit.normal, Color.green, 10.0f);

@@ -13,6 +13,8 @@ public class SpellManager : MonoBehaviour
     private bool qCastable; //Whether Q Spell can be Cast
     private bool eCastable; //Whether E Spell can be Cast
     public bool paused; //Check is game is paused
+    public bool secondaryDisabled;
+    public Sprite disabledImage;
 
     public Image qImage; //Icon for Spell in the Q slot
     public Image eImage; //Icon for Spell in the E slot
@@ -53,6 +55,13 @@ public class SpellManager : MonoBehaviour
         paused = false;
 
         pillar.SetActive(false); 
+
+        if (secondaryDisabled == true)
+        {
+            eGem.GetComponent<MeshRenderer>().material = recharge;
+            eName.text = "Disable";
+            eImage.sprite = disabledImage;
+        }
     }
 
 
@@ -96,7 +105,7 @@ public class SpellManager : MonoBehaviour
                 qGem.GetComponent<MeshRenderer>().material = spells[qSpellNum].colour;
             }
         }
-        if (eCastable == true && paused == false)
+        if (eCastable == true && paused == false && secondaryDisabled == false)
         {
             if (Input.GetButtonDown("E Spell"))
             {
@@ -143,7 +152,7 @@ public class SpellManager : MonoBehaviour
 
             InvokeRepeating("QStartRecharge", 0, 1);
         }
-        if (Input.GetButtonDown("Cast Secondary") && eCastable == true && paused == false)
+        if (Input.GetButtonDown("Cast Secondary") && eCastable == true && paused == false && secondaryDisabled == false)
         {
             eCastable = false;
             eGem.GetComponent<MeshRenderer>().material = recharge;
