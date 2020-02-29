@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject sound; //Pause Menu - Sound Section
     public GameObject pauseMenu;
 
+    public AudioSource ambientMusic;
+
     public SpellManager spellManager;
     void Start()
     {
@@ -58,7 +60,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit()
     {
-        //SceneManager.LoadScene("Title Screen");
+        SceneManager.LoadScene("Title Screen");
     }
 
     public void LoadSound()

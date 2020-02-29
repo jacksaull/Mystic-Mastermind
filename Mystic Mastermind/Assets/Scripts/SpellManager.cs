@@ -41,8 +41,6 @@ public class SpellManager : MonoBehaviour
 
     void Start()
     {
-        qSpellNum = 0;
-        eSpellNum = 1;
         qImage.sprite = icons[qSpellNum];
         eImage.sprite = icons[eSpellNum];
         qName.text = spells[qSpellNum].spellName;

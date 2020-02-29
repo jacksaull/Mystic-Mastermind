@@ -71,12 +71,12 @@ public class PlayerMovement : MonoBehaviour
         /*Causes the Player to sprint upon pressing the Shift key*/
         if (Input.GetButton("Sprint") && isGrounded)
         {
-            speed = 12f;
+            speed = 9f;
             running = true;
         }
         else if (Input.GetButton("Sprint") && Input.GetButton("Jump"))
         {
-            speed = 12f;
+            speed = 9f;
         }
         else if (isGrounded)
         {
