@@ -8,13 +8,19 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject main; //Pause Menu - Main Section
     public GameObject sound; //Pause Menu - Sound Section
-    public GameObject pauseMenu;
+    public GameObject pauseMenu; //The Pause Menu Canvas
 
-    public AudioSource ambientMusic;
+    public AudioSource effects; //Source to play Menu sounds
+    public AudioSource wake; //Source to play on awakening
+    public AudioClip pageTurn;
+    public AudioClip bookOpen;
+    public AudioClip bookClose;
 
     public SpellManager spellManager;
     void Start()
     {
+        wake.Play();
+
         pauseMenu.gameObject.SetActive(false);
         main.gameObject.SetActive(false);
         sound.gameObject.SetActive(false);
@@ -27,6 +33,9 @@ public class PauseMenu : MonoBehaviour
         {
             if (pauseMenu.gameObject.activeSelf == false)
             {
+                effects.PlayOneShot(bookOpen);
+                wake.Pause();
+
                 pauseMenu.gameObject.SetActive(true);
                 main.gameObject.SetActive(true);
                 Time.timeScale = 0;
@@ -36,6 +45,9 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
+                effects.PlayOneShot(bookClose);
+                wake.UnPause();
+
                 pauseMenu.gameObject.SetActive(false);
                 main.gameObject.SetActive(false);
                 sound.gameObject.SetActive(false);
@@ -49,6 +61,9 @@ public class PauseMenu : MonoBehaviour
 
     public void Continue()
     {
+        effects.PlayOneShot(bookClose);
+        wake.UnPause();
+
         pauseMenu.gameObject.SetActive(false);
         main.gameObject.SetActive(false);
         sound.gameObject.SetActive(false);
@@ -65,12 +80,14 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadSound()
     {
+        effects.PlayOneShot(pageTurn);
         main.gameObject.SetActive(false);
         sound.gameObject.SetActive(true);
     }
 
     public void QuitSound()
     {
+        effects.PlayOneShot(pageTurn);
         main.gameObject.SetActive(true);
         sound.gameObject.SetActive(false);
     }

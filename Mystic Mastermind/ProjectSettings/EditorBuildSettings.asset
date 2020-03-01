@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title Screen.unity
+    guid: 0364a4336e14cbe428ee59c989d13a5a
+  - enabled: 1
+    path: Assets/Scenes/Tutorial - Wind, Earth, Fire.unity
+    guid: 331c60e422f179441987dc07a291ee23
   m_configObjects: {}
