@@ -20,7 +20,7 @@ public class EndLevel : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            //SceneManager.LoadScene(level);
+            SceneManager.LoadScene(level);
         }
     }
 }

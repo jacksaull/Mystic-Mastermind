@@ -35,6 +35,7 @@ public class TipScript : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             tipScreen.SetActive(true);
+            Debug.Log(other.gameObject.name);
         }
     }
 

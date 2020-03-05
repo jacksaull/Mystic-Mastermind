@@ -120,7 +120,6 @@ public class PlayerMovement : MonoBehaviour
             playSound = false;
             StopCoroutine("MovementSound");
         }
-        Debug.Log(playSound);
     }
 
     IEnumerator MovementSound()
