@@ -97,7 +97,7 @@ MonoBehaviour:
   arrow: {fileID: 7670230364731295928, guid: 4715faae7b8a4934090c1a3a49d09f99, type: 3}
   arrowSpawn: {fileID: 8022364454977420353}
   shootInterval: 3
-  shootEffect: {fileID: 0}
+  shootEffect: {fileID: 8300000, guid: 572373b1f33b0fd4ea96fd2751bc0a2a, type: 3}
 --- !u!82 &2050480204226610437
 AudioSource:
   m_ObjectHideFlags: 0
