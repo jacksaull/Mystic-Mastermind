@@ -12,7 +12,12 @@ public class TitleMenu : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         titleScreen.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        fadeIn.SetBool("isStarted", false);
     }
 
     void Update()
@@ -28,6 +33,9 @@ public class TitleMenu : MonoBehaviour
         ambientMusic.Stop();
 
         Invoke("Transition", 6.2f);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void QuitGame()

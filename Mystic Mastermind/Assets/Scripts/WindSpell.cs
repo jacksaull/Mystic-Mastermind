@@ -8,6 +8,8 @@ public class WindSpell : BaseSpell
     float gravity = -19f; // Gravity strength on the Player
     public float jumpBoost; //Strength of Spell Jump Boost
 
+    bool isOnGround;
+
     public PlayerMovement playerMovement; //The Script for Player Movement to apply the boost
     public GameObject effectPos; //The position to apply the Wind Effect
     public ParticleSystem windEffect; //The Particle System for the Wind Effect
@@ -15,17 +17,29 @@ public class WindSpell : BaseSpell
     void Start()
     {
         spellName = "Wind";
+        isOnGround = true;
+
+        spellManager = GameObject.FindWithTag("Spell Manager").GetComponent<SpellManager>();
     }   
 
 
     void Update()
     {
-
+        if (isOnGround == false)
+        {
+            if (playerMovement.isGrounded == true)
+            {
+                isOnGround = true;
+                RechargeSpell(castSpellSlot);
+            }
+        }
     }
 
     /*This method manages what occurs when the Spell is selected and Cast*/
-    public override void CastSpell()
+    public override void CastSpell(string spellSlot)
     {
+        castSpellSlot = spellSlot;
+        isOnGround = false;
         player.PlayOneShot(soundEffect, 1);
         playerMovement.velocity.y = Mathf.Sqrt(jumpBoost * -2f * gravity);
         windEffect.Play();

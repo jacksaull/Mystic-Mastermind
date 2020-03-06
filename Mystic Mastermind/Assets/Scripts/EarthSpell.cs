@@ -12,6 +12,8 @@ public class EarthSpell : BaseSpell
     void Start()
     {
         spellName = "Earth";
+
+        spellManager = GameObject.FindWithTag("Spell Manager").GetComponent<SpellManager>();
     }
 
 
@@ -21,20 +23,13 @@ public class EarthSpell : BaseSpell
     }
 
     /*This method manages what occurs when the Spell is selected and Cast*/
-    public override void CastSpell()
+    public override void CastSpell(string spellSlot)
     {
+        castSpellSlot = spellSlot;
         if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask) && hit.collider.gameObject.name == "Dirt")
         {
-            //Debug.DrawRay(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward) * hit.distance, Color.green, 10.0f);
-            //Debug.DrawRay(hit.point, hit.normal, Color.green, 10.0f);
-            //Debug.Log("Did Hit");
             pillar.transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
             Instantiate(pillar, hit.point, pillar.transform.rotation);
-        }
-        else
-        {
-            //Debug.DrawRay(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward) * 1000, Color.red, 10.0f);
-            //Debug.Log("Did not Hit");
         }
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3503799130889575395}
   m_Layer: 0
   m_Name: Spell Manager
-  m_TagString: Untagged
+  m_TagString: Spell Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,6 +50,8 @@ MonoBehaviour:
   qSpellNum: 0
   eSpellNum: 0
   paused: 0
+  secondaryDisabled: 0
+  disabledImage: {fileID: 0}
   qImage: {fileID: 0}
   eImage: {fileID: 0}
   qName: {fileID: 0}

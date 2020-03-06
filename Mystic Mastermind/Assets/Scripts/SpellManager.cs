@@ -27,8 +27,6 @@ public class SpellManager : MonoBehaviour
     public GameObject qGem; //Gem of left Staff
     public GameObject eGem; //Gem of right Staff
     public Material recharge; //Recharge Gem Material
-    private int qRecharge = 5;
-    private int eRecharge = 5;
 
     public GameObject lookDirection; //The Object of which the RayCast will come from
     int layerMask = 1 << 8; //The Layer that the RayCast should make contact with
@@ -146,17 +144,13 @@ public class SpellManager : MonoBehaviour
         {
             qCastable = false;
             qGem.GetComponent<MeshRenderer>().material = recharge;
-            spells[qSpellNum].CastSpell();
-
-            InvokeRepeating("QStartRecharge", 0, 1);
+            spells[qSpellNum].CastSpell("q");
         }
         if (Input.GetButtonDown("Cast Secondary") && eCastable == true && paused == false && secondaryDisabled == false)
         {
             eCastable = false;
             eGem.GetComponent<MeshRenderer>().material = recharge;
-            spells[eSpellNum].CastSpell();
-
-            InvokeRepeating("EStartRecharge", 0, 1);
+            spells[eSpellNum].CastSpell("e");
         }
 
         if (eName.text == "Earth" || qName.text == "Earth")
@@ -178,35 +172,19 @@ public class SpellManager : MonoBehaviour
         }
     }
 
-    void QStartRecharge()
+    public void QStartRecharge()
     {
-        if (qRecharge != 0)
-        {
-            qRecharge -= 1;
-        }
-        else
-        {
-            qRecharge = 5;
-            qCastable = true;
-            qGem.GetComponent<MeshRenderer>().material = spells[qSpellNum].colour;
-            CancelInvoke("QStartRecharge");
-            player.PlayOneShot(rechargeSound, 1);
-        }
+        qCastable = true;
+        qGem.GetComponent<MeshRenderer>().material = spells[qSpellNum].colour;
+        CancelInvoke("QStartRecharge");
+        player.PlayOneShot(rechargeSound, 1);
     }
 
-    void EStartRecharge()
+    public void EStartRecharge()
     {
-        if (eRecharge != 0)
-        {
-            eRecharge -= 1;
-        }
-        else
-        {
-            eRecharge = 5;
-            eCastable = true;
-            eGem.GetComponent<MeshRenderer>().material = spells[eSpellNum].colour;
-            CancelInvoke("EStartRecharge");
-            player.PlayOneShot(rechargeSound, 1);
-        }
+        eCastable = true;
+        eGem.GetComponent<MeshRenderer>().material = spells[eSpellNum].colour;
+        CancelInvoke("EStartRecharge");
+        player.PlayOneShot(rechargeSound, 1);
     }
 }

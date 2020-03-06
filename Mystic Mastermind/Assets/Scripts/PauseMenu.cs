@@ -25,6 +25,8 @@ public class PauseMenu : MonoBehaviour
         main.gameObject.SetActive(false);
         sound.gameObject.SetActive(false);
         Time.timeScale = 1;
+
+        Cursor.visible = false;
     }
 
     void Update()
@@ -40,6 +42,7 @@ public class PauseMenu : MonoBehaviour
                 main.gameObject.SetActive(true);
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
 
                 spellManager.paused = true;
             }
@@ -53,6 +56,7 @@ public class PauseMenu : MonoBehaviour
                 sound.gameObject.SetActive(false);
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
 
                 spellManager.paused = false;
             }
@@ -69,6 +73,7 @@ public class PauseMenu : MonoBehaviour
         sound.gameObject.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         spellManager.paused = false;
     }

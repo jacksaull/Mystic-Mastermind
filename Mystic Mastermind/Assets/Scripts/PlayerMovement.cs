@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask; //Checks whether a certain layer has been made contact with
 
     public Vector3 velocity; //Velocity of the Player falling
-    bool isGrounded; //Bool for whether the Player is currently on the ground
+    public bool isGrounded; //Bool for whether the Player is currently on the ground
 
     public AudioSource player; //Sound for Player
     public AudioClip Walk; //Walk Sound
@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
-            player.PlayOneShot(Walk, 0.7f);
+            player.PlayOneShot(Walk, 0.3f);
             if (running == false)
             {
                 yield return new WaitForSeconds(walkingInterval);

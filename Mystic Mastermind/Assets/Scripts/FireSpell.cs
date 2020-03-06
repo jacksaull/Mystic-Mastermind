@@ -9,6 +9,8 @@ public class FireSpell : BaseSpell
     void Start()
     {
         spellName = "Fire";
+
+        spellManager = GameObject.FindWithTag("Spell Manager").GetComponent<SpellManager>();
     }
 
 
@@ -18,8 +20,9 @@ public class FireSpell : BaseSpell
     }
 
     /*This method manages what occurs when the Spell is selected and Cast*/
-    public override void CastSpell()
+    public override void CastSpell(string spellSlot)
     {
+        castSpellSlot = spellSlot;
         player.PlayOneShot(soundEffect, 1);
         Instantiate(Fireball, lookDirection.transform.position, lookDirection.transform.rotation);  
     }
