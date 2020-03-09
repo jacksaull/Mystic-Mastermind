@@ -7,11 +7,12 @@ public class ArrowTrap : MonoBehaviour
     public GameObject arrow; //Ammo Prefab for the Trap
     public GameObject arrowSpawn; //Where Arrows will shoot from
     public float shootInterval; //How often Arrows should shoot from the trap
+    public float offset; //Offset for when Trap starts
     public AudioClip shootEffect;
     private AudioSource audioSource;
     void Start()
     {
-        InvokeRepeating("ShootArrow", 0, shootInterval);
+        InvokeRepeating("ShootArrow", offset, shootInterval);
         audioSource = this.GetComponent<AudioSource>();
     }
 
