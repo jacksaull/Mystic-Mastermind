@@ -29,8 +29,6 @@ public class SpellManager : MonoBehaviour
     public Material recharge; //Recharge Gem Material
 
     public GameObject lookDirection; //The Object of which the RayCast will come from
-    int layerMask = 1 << 8; //The Layer that the RayCast should make contact with
-    RaycastHit hit; //The Raycast
     public GameObject pillar; //Earth Pillar Spell Object
 
     public AudioSource player; //AudioSource to use
@@ -151,24 +149,6 @@ public class SpellManager : MonoBehaviour
             eCastable = false;
             eGem.GetComponent<MeshRenderer>().material = recharge;
             spells[eSpellNum].CastSpell("e");
-        }
-
-        if (eName.text == "Earth" || qName.text == "Earth")
-        {
-            if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask))
-            {
-                pillar.SetActive(true);
-                pillar.transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-                pillar.transform.position = hit.point;
-            }
-            else
-            {
-                pillar.SetActive(false);
-            }
-        }
-        else
-        {
-            pillar.SetActive(false);
         }
     }
 

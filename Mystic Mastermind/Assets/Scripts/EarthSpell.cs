@@ -8,7 +8,7 @@ public class EarthSpell : BaseSpell
     int layerMask = 1 << 8; //The Layer that the RayCast should make contact with
     RaycastHit hit; //The Raycast
     public GameObject pillar; //Earth Pillar Spell Object
-
+    public GameObject pillarGhost;
     void Start()
     {
         spellName = "Earth";
@@ -16,10 +16,25 @@ public class EarthSpell : BaseSpell
         spellManager = GameObject.FindWithTag("Spell Manager").GetComponent<SpellManager>();
     }
 
-
     void Update()
     {
-        
+        if (spellManager.eName.text == "Earth" || spellManager.qName.text == "Earth")
+        {
+            if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask) && hit.collider.gameObject.name == "Dirt")
+            {
+                pillarGhost.SetActive(true);
+                pillarGhost.transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+                pillarGhost.transform.position = hit.point;
+            }
+            else
+            {
+                pillarGhost.SetActive(false);
+            }
+        }
+        else
+        {
+            pillarGhost.SetActive(false);
+        }
     }
 
     /*This method manages what occurs when the Spell is selected and Cast*/
@@ -30,6 +45,17 @@ public class EarthSpell : BaseSpell
         {
             pillar.transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
             Instantiate(pillar, hit.point, pillar.transform.rotation);
+
+            Invoke("Recharge", 5);
         }
+        else
+        {
+            RechargeSpell(castSpellSlot);
+        }
+    }
+
+    void Recharge()
+    {
+        RechargeSpell(castSpellSlot);
     }
 }
