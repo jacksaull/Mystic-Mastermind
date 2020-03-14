@@ -20,7 +20,7 @@ public class EarthSpell : BaseSpell
     {
         if (spellManager.eName.text == "Earth" || spellManager.qName.text == "Earth")
         {
-            if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask) && hit.collider.gameObject.name == "Dirt")
+            if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask) && hit.collider.gameObject.tag == "Dirt")
             {
                 pillarGhost.SetActive(true);
                 pillarGhost.transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
@@ -41,12 +41,12 @@ public class EarthSpell : BaseSpell
     public override void CastSpell(string spellSlot)
     {
         castSpellSlot = spellSlot;
-        if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask) && hit.collider.gameObject.name == "Dirt")
+        if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask) && hit.collider.gameObject.tag == "Dirt")
         {
             pillar.transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
             Instantiate(pillar, hit.point, pillar.transform.rotation);
 
-            Invoke("Recharge", 5);
+            Invoke("Recharge", 2.5f);
         }
         else
         {
