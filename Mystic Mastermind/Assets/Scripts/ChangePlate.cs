@@ -45,14 +45,18 @@ public class ChangePlate : MonoBehaviour
             spellManager.qName.text = spellManager.spells[qSpell].spellName;
             spellManager.qGem.GetComponent<MeshRenderer>().material = spellManager.spells[qSpell].colour;
 
-            if (!secondaryDisabled)
-            {
-                spellManager.eSpellNum = eSpell;
-                spellManager.eImage.sprite = spellManager.icons[eSpell];
-                spellManager.eName.text = spellManager.spells[eSpell].spellName;
-                spellManager.eGem.GetComponent<MeshRenderer>().material = spellManager.spells[eSpell].colour;
-            }
 
+            spellManager.eSpellNum = eSpell;
+            spellManager.eImage.sprite = spellManager.icons[eSpell];
+            spellManager.eName.text = spellManager.spells[eSpell].spellName;
+            spellManager.eGem.GetComponent<MeshRenderer>().material = spellManager.spells[eSpell].colour;
+
+            if (secondaryDisabled)
+            {
+                spellManager.eGem.GetComponent<MeshRenderer>().material = spellManager.recharge;
+                spellManager.eName.text = "Disable";
+                spellManager.eImage.sprite = spellManager.disabledImage;
+            }
 
             spellManager.secondaryDisabled = secondaryDisabled;
             for (int i = 0; i < spellManager.spells.Length; i++)
