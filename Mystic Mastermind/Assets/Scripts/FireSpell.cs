@@ -24,6 +24,13 @@ public class FireSpell : BaseSpell
     {
         castSpellSlot = spellSlot;
         player.PlayOneShot(soundEffect, 1);
-        Instantiate(Fireball, lookDirection.transform.position, lookDirection.transform.rotation);  
+        Instantiate(Fireball, lookDirection.transform.position, lookDirection.transform.rotation);
+
+        Invoke("Recharge", 1.5f);
+    }
+
+    void Recharge()
+    {
+        RechargeSpell(castSpellSlot);
     }
 }

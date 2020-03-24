@@ -36,7 +36,7 @@ public class Fireball : MonoBehaviour
         if (col.gameObject.name != "Player")
         {
             Instantiate(Explosion, this.gameObject.transform.position, this.gameObject.transform.rotation);
-            Destroy(this.gameObject);
+            Invoke("Explode", 0.05f);
         }
     }
 }
