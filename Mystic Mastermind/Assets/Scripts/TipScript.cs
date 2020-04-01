@@ -6,9 +6,15 @@ using UnityEngine;
 
 public class TipScript : MonoBehaviour
 {
+    bool isTriggered;
+
     public GameObject tipScreen; //The Tip Interface
     public TextMeshProUGUI tipTitle; //The Tip Title
     public TextMeshProUGUI tipBody; //The Tip Description
+
+    public TextMeshProUGUI promptText;
+    public GameObject prompt;
+
     public Image image1; //Image to help with Tip
     public Image image2; //Image to help with Tip
 
@@ -23,19 +29,31 @@ public class TipScript : MonoBehaviour
         tipBody.text = tipBodyText;
         image1.sprite = tipImage1;
         image2.sprite = tipImage2;
+        prompt.SetActive(false);
+
+        isTriggered = false;
     }
 
     void Update()
     {
-        
+        if (Input.GetKeyDown("t") && isTriggered && tipScreen.activeSelf == false)
+        {
+            tipScreen.SetActive(true);
+            prompt.SetActive(false);
+        }
+        else if (Input.GetKeyDown("t") && isTriggered && tipScreen.activeSelf == true)
+        {
+            tipScreen.SetActive(false);
+            prompt.SetActive(true);
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player")
         {
-            tipScreen.SetActive(true);
-            Debug.Log(other.gameObject.name);
+            prompt.SetActive(true);
+            isTriggered = true;
         }
     }
 
@@ -44,6 +62,8 @@ public class TipScript : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             tipScreen.SetActive(false);
+            prompt.SetActive(false);
+            isTriggered = false;
         }
     }
 }

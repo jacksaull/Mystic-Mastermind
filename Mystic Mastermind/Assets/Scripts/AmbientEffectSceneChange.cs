@@ -7,10 +7,10 @@ public class AmbientEffectSceneChange : MonoBehaviour
     public AudioSource source; //Source to play ambient effect from
     public AudioClip effect; //Effect to play
     public GameObject sceneChangeObject;
-    private bool hasPlayed = false;
+    private bool hasPlayed;
     void Start()
     {
-        
+        hasPlayed = false;
     }
 
     void Update()
@@ -28,10 +28,12 @@ public class AmbientEffectSceneChange : MonoBehaviour
             if (sceneChangeObject.activeSelf == false)
             {
                 sceneChangeObject.SetActive(true);
+                Debug.Log("ON");
             }
-            else
+            else if (sceneChangeObject.activeSelf == true)
             {
                 sceneChangeObject.SetActive(false);
+                Debug.Log("OFF");
             }
         }
     }

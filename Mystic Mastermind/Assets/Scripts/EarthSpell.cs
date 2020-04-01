@@ -9,6 +9,7 @@ public class EarthSpell : BaseSpell
     RaycastHit hit; //The Raycast
     public GameObject pillar; //Earth Pillar Spell Object
     public GameObject pillarGhost;
+    public GameObject eLight;
     void Start()
     {
         spellName = "Earth";
@@ -18,22 +19,26 @@ public class EarthSpell : BaseSpell
 
     void Update()
     {
-        if (spellManager.eName.text == "Earth" || spellManager.qName.text == "Earth")
+        if (spellManager.qName.text == "Earth" || spellManager.eName.text == "Earth")
         {
             if (Physics.Raycast(lookDirection.transform.position, lookDirection.transform.TransformDirection(Vector3.forward), out hit, 25, layerMask) && hit.collider.gameObject.tag == "Dirt")
             {
                 pillarGhost.SetActive(true);
+                eLight.SetActive(true);
                 pillarGhost.transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
                 pillarGhost.transform.position = hit.point;
+                eLight.transform.position = hit.point;
             }
             else
             {
                 pillarGhost.SetActive(false);
+                eLight.SetActive(false);
             }
         }
         else
         {
             pillarGhost.SetActive(false);
+            eLight.SetActive(false);
         }
     }
 
