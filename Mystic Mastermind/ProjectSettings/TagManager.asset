@@ -8,6 +8,8 @@ TagManager:
   - Dirt
   - FireTargetTrigger
   - Fireball
+  - Portal
+  - AudioManager
   layers:
   - Default
   - TransparentFX

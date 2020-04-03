@@ -8,9 +8,12 @@ public class MusicManager : MonoBehaviour
     public AudioClip musicClip; //Clip to become current Music
 
     private bool hasPlayed = false;
+
+    public MixerLevels audioManager;
     void Start()
     {
-
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<MixerLevels>();
+        musicPlayer = audioManager.musicSource;
     }
 
     void Update()

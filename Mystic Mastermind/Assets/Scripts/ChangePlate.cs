@@ -6,15 +6,15 @@ public class ChangePlate : MonoBehaviour
 {
     public SpellManager spellManager;
     public Health health;
-    public Animator magicAnimation;
-    public GameObject spawnPoint;
+    public Animator magicAnimation; //Change Plate Animation
+    public GameObject spawnPoint; //GameObject of new Spawn Point
 
     AudioSource audioSource;
 
-    bool activated;
-    public bool secondaryDisabled;
-    public int qSpell;
-    public int eSpell;
+    bool activated; //Has Plate already been activated
+    public bool secondaryDisabled; //Whether Secondary Spell is disabled
+    public int qSpell; //Primary Spell Slot Array Value
+    public int eSpell; //Secondary Spell Slot Array Value
     public bool[] spellDisabled;
     void Start()
     {

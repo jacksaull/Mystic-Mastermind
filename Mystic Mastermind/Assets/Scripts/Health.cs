@@ -17,6 +17,9 @@ public class Health : MonoBehaviour
     public SpellManager spellManager;
     public PlayerMovement playerMovement;
     public MouseLook mouseLook;
+    public EndPortal endPortal;
+
+    public int deaths; //Total deaths for Level
     void Start()
     {
         deathScreen.SetActive(false);
@@ -26,6 +29,8 @@ public class Health : MonoBehaviour
         mouseLook = GameObject.FindWithTag("MainCamera").GetComponent<MouseLook>();
 
         isDead = false;
+
+        deaths = 0;
     }
 
     void Update()
@@ -47,6 +52,8 @@ public class Health : MonoBehaviour
             spellManager.enabled = false;
             playerMovement.enabled = false;
             mouseLook.enabled = false;
+
+            deaths++;
         }
     }
 
