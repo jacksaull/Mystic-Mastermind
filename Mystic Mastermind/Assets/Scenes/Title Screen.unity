@@ -432,7 +432,7 @@ Transform:
   - {fileID: 2145638338}
   - {fileID: 579782459}
   - {fileID: 1291580118}
-  - {fileID: 5265051694904360753}
+  - {fileID: 2706589683913398336}
   - {fileID: 201972000}
   - {fileID: 1088995242}
   - {fileID: 458476526}
@@ -5252,11 +5252,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 9072506053361454246, guid: 3b392ca94ca3bae4988711e419094ac3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -62.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072506053361454246, guid: 3b392ca94ca3bae4988711e419094ac3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 47.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072506053361454246, guid: 3b392ca94ca3bae4988711e419094ac3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072506053361454246, guid: 3b392ca94ca3bae4988711e419094ac3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b392ca94ca3bae4988711e419094ac3, type: 3}
---- !u!4 &5265051694904360753 stripped
+--- !u!4 &2706589683913398336 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7826838770815248142, guid: 3b392ca94ca3bae4988711e419094ac3,
+  m_CorrespondingSourceObject: {fileID: 9072506053361454246, guid: 3b392ca94ca3bae4988711e419094ac3,
     type: 3}
   m_PrefabInstance: {fileID: 2706589683913398335}
   m_PrefabAsset: {fileID: 0}

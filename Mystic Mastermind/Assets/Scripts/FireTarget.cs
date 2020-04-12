@@ -9,13 +9,17 @@ public class FireTarget : MonoBehaviour
     public AudioClip beep;
     bool isHit;
 
+    public string findTag;
+
     public FireTargetManager fireTargetManager;
+    public ObjectiveUI objectiveUI;
     public Material hitMat;
     void Start()
     {
         targetLight = GetComponentInChildren<Light>();
         source = GetComponent<AudioSource>();
         fireTargetManager = GameObject.FindWithTag("FireTargetTrigger").GetComponent<FireTargetManager>();
+        objectiveUI = GameObject.FindWithTag(findTag).GetComponent<ObjectiveUI>();
 
         isHit = false;
     }
@@ -34,6 +38,7 @@ public class FireTarget : MonoBehaviour
             targetLight.intensity = 3;
 
             fireTargetManager.TargetHit();
+            objectiveUI.UpdateCounter();
             this.gameObject.GetComponent<MeshRenderer>().material = hitMat;
         }
     }
