@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArrowTrap : MonoBehaviour
 {
+    public GameObject parent;
     public GameObject arrow; //Ammo Prefab for the Trap
     public GameObject arrowSpawn; //Where Arrows will shoot from
     public float shootInterval; //How often Arrows should shoot from the trap
@@ -23,7 +24,10 @@ public class ArrowTrap : MonoBehaviour
 
     void ShootArrow()
     {
-        Instantiate(arrow, arrowSpawn.transform.position, arrowSpawn.transform.rotation);
-        audioSource.PlayOneShot(shootEffect);
+        if (parent.activeSelf == true)
+        {
+            Instantiate(arrow, arrowSpawn.transform.position, arrowSpawn.transform.rotation);
+            audioSource.PlayOneShot(shootEffect);
+        }
     }
 }

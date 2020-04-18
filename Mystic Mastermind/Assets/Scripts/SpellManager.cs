@@ -16,6 +16,9 @@ public class SpellManager : MonoBehaviour
     public bool secondaryDisabled;
     public Sprite disabledImage;
 
+    public bool isComboSpell;
+    public int comboSpellIndex;
+
     public Image qImage; //Icon for Spell in the Q slot
     public Image eImage; //Icon for Spell in the E slot
     public TextMeshProUGUI qName; //Name for Spell in the Q slot
@@ -35,8 +38,12 @@ public class SpellManager : MonoBehaviour
     public AudioClip rechargeSound; //Sound Effect to play upon use
     public AudioClip changeSound; //Sound Effect to play upon use
 
+    public ComboSpellManager comboSpellManager;
+
     void Start()
     {
+        comboSpellManager = GameObject.FindWithTag("Combo Spell Manager").GetComponent<ComboSpellManager>();
+
         qImage.sprite = icons[qSpellNum];
         eImage.sprite = icons[eSpellNum];
         qName.text = spells[qSpellNum].spellName;
@@ -47,6 +54,7 @@ public class SpellManager : MonoBehaviour
         eCastable = true;
 
         paused = false;
+        isComboSpell = false;
 
         pillar.SetActive(false); 
 
@@ -56,6 +64,7 @@ public class SpellManager : MonoBehaviour
             eName.text = "Disable";
             eImage.sprite = disabledImage;
         }
+        comboSpellManager.CheckComboSpell();
     }
 
 
@@ -97,6 +106,8 @@ public class SpellManager : MonoBehaviour
                 qImage.sprite = icons[qSpellNum];
                 qName.text = spells[qSpellNum].spellName;
                 qGem.GetComponent<MeshRenderer>().material = spells[qSpellNum].colour;
+
+                comboSpellManager.CheckComboSpell();
             }
         }
         if (eCastable == true && paused == false && secondaryDisabled == false)
@@ -135,6 +146,8 @@ public class SpellManager : MonoBehaviour
                 eImage.sprite = icons[eSpellNum];
                 eName.text = spells[eSpellNum].spellName;
                 eGem.GetComponent<MeshRenderer>().material = spells[eSpellNum].colour;
+
+                comboSpellManager.CheckComboSpell();
             }
         }
 
@@ -149,6 +162,14 @@ public class SpellManager : MonoBehaviour
             eCastable = false;
             eGem.GetComponent<MeshRenderer>().material = recharge;
             spells[eSpellNum].CastSpell("e");
+        }
+        if (Input.GetButtonDown("Cast Combo") && qCastable == true && eCastable == true && paused == false && secondaryDisabled == false && isComboSpell == true)
+        {
+            qCastable = false;
+            eCastable = false;
+            qGem.GetComponent<MeshRenderer>().material = recharge;
+            eGem.GetComponent<MeshRenderer>().material = recharge;
+            comboSpellManager.comboSpells[comboSpellIndex].CastSpell();
         }
     }
 

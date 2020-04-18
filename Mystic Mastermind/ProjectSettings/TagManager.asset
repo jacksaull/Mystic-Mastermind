@@ -11,6 +11,7 @@ TagManager:
   - Portal
   - AudioManager
   - FireTargetObjective
+  - Combo Spell Manager
   layers:
   - Default
   - TransparentFX

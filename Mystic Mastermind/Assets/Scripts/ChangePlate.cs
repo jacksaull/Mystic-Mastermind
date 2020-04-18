@@ -16,10 +16,13 @@ public class ChangePlate : MonoBehaviour
     public int qSpell; //Primary Spell Slot Array Value
     public int eSpell; //Secondary Spell Slot Array Value
     public bool[] spellDisabled;
+
+    public ComboSpellManager comboSpellManager;
     void Start()
     {
         spellManager = GameObject.FindWithTag("Spell Manager").GetComponent<SpellManager>();
         health = GameObject.FindWithTag("Player").GetComponent<Health>();
+        comboSpellManager = GameObject.FindWithTag("Combo Spell Manager").GetComponent<ComboSpellManager>();
         audioSource = GetComponent<AudioSource>();
 
         activated = false;
@@ -63,6 +66,7 @@ public class ChangePlate : MonoBehaviour
             {
                 spellManager.spells[i].isDisabled = spellDisabled[i];
             }
+            comboSpellManager.CheckComboSpell();
         }
     }
 }

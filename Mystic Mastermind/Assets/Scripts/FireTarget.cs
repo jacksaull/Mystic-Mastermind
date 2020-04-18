@@ -19,7 +19,7 @@ public class FireTarget : MonoBehaviour
         targetLight = GetComponentInChildren<Light>();
         source = GetComponent<AudioSource>();
         fireTargetManager = GameObject.FindWithTag("FireTargetTrigger").GetComponent<FireTargetManager>();
-        objectiveUI = GameObject.FindWithTag(findTag).GetComponent<ObjectiveUI>();
+        objectiveUI = GameObject.FindWithTag("FireTargetObjective").GetComponent<ObjectiveUI>();
 
         isHit = false;
     }

@@ -15,7 +15,7 @@ abstract public class BaseSpell : MonoBehaviour
     public SpellManager spellManager;
     void Start()
     {
-
+        spellManager = GameObject.FindWithTag("Spell Manager").GetComponent<SpellManager>();
     }
 
 

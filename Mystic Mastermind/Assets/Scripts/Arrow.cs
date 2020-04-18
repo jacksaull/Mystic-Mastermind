@@ -14,6 +14,7 @@ public class Arrow : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
 
         rb.AddForce(transform.forward * 900);
+        Invoke("Delete", 10.0f);
     }
 
     void Update()
