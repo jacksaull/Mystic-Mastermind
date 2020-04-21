@@ -117,7 +117,8 @@ MonoBehaviour:
   secondaryDisabled: 1
   qSpell: 2
   eSpell: 0
-  spellDisabled: 010100
+  spellDisabled: 01010001
+  comboSpellManager: {fileID: 0}
 --- !u!82 &4141790418222007594
 AudioSource:
   m_ObjectHideFlags: 0

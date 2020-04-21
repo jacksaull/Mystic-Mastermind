@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3503799130889575393}
   - component: {fileID: 3503799130889575392}
   - component: {fileID: 3503799130889575395}
+  - component: {fileID: 135119483}
   m_Layer: 0
   m_Name: Spell Manager
   m_TagString: Spell Manager
@@ -32,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 120379597045111111}
+  - {fileID: 5764524395872206542}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,10 +50,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   qSpellNum: 0
-  eSpellNum: 0
+  eSpellNum: 1
   paused: 0
-  secondaryDisabled: 0
-  disabledImage: {fileID: 0}
+  secondaryDisabled: 1
+  disabledImage: {fileID: 21300000, guid: 3730c53f7ba6f6d49994ea79f5c0aeca, type: 3}
+  isComboSpell: 0
+  comboSpellIndex: 0
   qImage: {fileID: 0}
   eImage: {fileID: 0}
   qName: {fileID: 0}
@@ -60,10 +64,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d582f6e4f48ea946986ea0723ac275a, type: 3}
   - {fileID: 21300000, guid: b0ac965bf741afc409d4cb715d76f683, type: 3}
   - {fileID: 21300000, guid: a915d052103642240aa7b4e3212fbeac, type: 3}
+  - {fileID: 21300000, guid: 20abbc69cc4908f408d5fcbfa3bee74a, type: 3}
   spells:
   - {fileID: 3503799130889575395}
   - {fileID: 3503799130889575393}
   - {fileID: 3503799130889575392}
+  - {fileID: 135119483}
   qGem: {fileID: 0}
   eGem: {fileID: 0}
   recharge: {fileID: 2100000, guid: c1cee8d35a1f3b24390cf5fd182d4ac5, type: 2}
@@ -72,6 +78,7 @@ MonoBehaviour:
   player: {fileID: 0}
   rechargeSound: {fileID: 8300000, guid: e95d84c197dace644a832240c8251734, type: 3}
   changeSound: {fileID: 8300000, guid: 0305bb8baff3516459b22928f08daeb7, type: 3}
+  comboSpellManager: {fileID: 0}
 --- !u!114 &3503799130889575393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,12 +92,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName: Earth
-  isDisabled: 0
+  castSpellSlot: 
+  isDisabled: 1
   colour: {fileID: 2100000, guid: 75ff08a102ef55e43bad5989dca3b65f, type: 2}
   player: {fileID: 0}
   soundEffect: {fileID: 8300000, guid: 69c8d2953575fd943b0a0b773f4b1ec3, type: 3}
+  spellManager: {fileID: 3503799130889575326}
   lookDirection: {fileID: 0}
   pillar: {fileID: 7267729793162779796, guid: 061c144c9fdcede43a51db7f071be935, type: 3}
+  pillarGhost: {fileID: 4074400609589679253}
+  eLight: {fileID: 5764524395872206540}
 --- !u!114 &3503799130889575392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,10 +115,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName: Fire
-  isDisabled: 0
+  castSpellSlot: 
+  isDisabled: 1
   colour: {fileID: 2100000, guid: 094346d803b28a840960dd40194df563, type: 2}
   player: {fileID: 0}
   soundEffect: {fileID: 8300000, guid: 5cff3f24e1b52c249b6e2cf3d1b47817, type: 3}
+  spellManager: {fileID: 0}
   lookDirection: {fileID: 0}
   Fireball: {fileID: 2303401692029707047, guid: 09b466d0df404414b91ef31f37ec036b,
     type: 3}
@@ -124,14 +137,123 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName: Wind
+  castSpellSlot: 
   isDisabled: 0
   colour: {fileID: 2100000, guid: a962354b606cfd246b78ea2621d06245, type: 2}
   player: {fileID: 0}
   soundEffect: {fileID: 8300000, guid: c12b2369aa1c9994b938e555a3589fb2, type: 3}
+  spellManager: {fileID: 0}
   jumpBoost: 3
   playerMovement: {fileID: 0}
   effectPos: {fileID: 0}
   windEffect: {fileID: 0}
+--- !u!114 &135119483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503799130889575394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef70bea6f1e4b2240b7bc293f1bc9872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellName: Light
+  castSpellSlot: 
+  isDisabled: 1
+  colour: {fileID: 2100000, guid: c075cb122ce90854c989d6961ab3d0d0, type: 2}
+  player: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: c212cddb4f00e21438fe1f2d4d0ad0d5, type: 3}
+  spellManager: {fileID: 0}
+  lookDirection: {fileID: 0}
+  Orb: {fileID: 2907726208842928443, guid: 222ebafba3d14b74d82918d573a63083, type: 3}
+--- !u!1001 &3503799130862300818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3503799130889575327}
+    m_Modifications:
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 145.48672
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -37.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -62.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783838, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_Name
+      value: ELight
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178418347930783838, guid: 9c6b45014ae998e4da6031919bc22050,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c6b45014ae998e4da6031919bc22050, type: 3}
+--- !u!1 &5764524395872206540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9178418347930783838, guid: 9c6b45014ae998e4da6031919bc22050,
+    type: 3}
+  m_PrefabInstance: {fileID: 3503799130862300818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5764524395872206542 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9178418347930783836, guid: 9c6b45014ae998e4da6031919bc22050,
+    type: 3}
+  m_PrefabInstance: {fileID: 3503799130862300818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3503799130935698605
 PrefabInstance:
   m_ObjectHideFlags: 0
