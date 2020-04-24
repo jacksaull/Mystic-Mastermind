@@ -16,6 +16,7 @@ public class ChangePlate : MonoBehaviour
     public int qSpell; //Primary Spell Slot Array Value
     public int eSpell; //Secondary Spell Slot Array Value
     public bool[] spellDisabled;
+    public bool[] comboSpellDisabled;
 
     public ComboSpellManager comboSpellManager;
     void Start()
@@ -65,6 +66,10 @@ public class ChangePlate : MonoBehaviour
             for (int i = 0; i < spellManager.spells.Length; i++)
             {
                 spellManager.spells[i].isDisabled = spellDisabled[i];
+            }
+            for (int i = 0; i < comboSpellManager.comboSpells.Length; i++)
+            {
+                comboSpellManager.comboSpells[i].isDisabled = comboSpellDisabled[i];
             }
             comboSpellManager.CheckComboSpell();
         }

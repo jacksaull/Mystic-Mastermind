@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3607738811403006313}
   m_Layer: 0
   m_Name: Audio Manager
-  m_TagString: Untagged
+  m_TagString: AudioManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterMixer: {fileID: 24100000, guid: 74661c731096f774a92b850bfc307e49, type: 2}
-  musicTest: {fileID: 0}
+  musicTest: {fileID: 8300000, guid: b8605c971e9650a4792d317f3ac2b947, type: 3}
   playerTest: {fileID: 8300000, guid: a604de772afc43440bdc4359befd847e, type: 3}
   spellTest: {fileID: 8300000, guid: c12b2369aa1c9994b938e555a3589fb2, type: 3}
   effectTest: {fileID: 8300000, guid: 283dcf413bd0e3b43964cfa650f6cd6d, type: 3}

@@ -167,7 +167,7 @@ MonoBehaviour:
   soundEffect: {fileID: 8300000, guid: c212cddb4f00e21438fe1f2d4d0ad0d5, type: 3}
   spellManager: {fileID: 0}
   lookDirection: {fileID: 0}
-  Orb: {fileID: 2907726208842928443, guid: 222ebafba3d14b74d82918d573a63083, type: 3}
+  Orb: {fileID: 6656559998782796122, guid: 222ebafba3d14b74d82918d573a63083, type: 3}
 --- !u!1001 &3503799130862300818
 PrefabInstance:
   m_ObjectHideFlags: 0

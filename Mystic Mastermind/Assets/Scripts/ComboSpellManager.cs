@@ -35,7 +35,7 @@ public class ComboSpellManager : MonoBehaviour
         {
             if (!comboSpellMatch)
             {
-                if (spellManager.qName.text == comboSpells[i].element1 && spellManager.eName.text == comboSpells[i].element2 || spellManager.eName.text == comboSpells[i].element1 && spellManager.qName.text == comboSpells[i].element2)
+                if (spellManager.qName.text == comboSpells[i].element1 && spellManager.eName.text == comboSpells[i].element2 && comboSpells[i].isDisabled == false || spellManager.eName.text == comboSpells[i].element1 && spellManager.qName.text == comboSpells[i].element2 && comboSpells[i].isDisabled == false)
                 {
                     spellManager.isComboSpell = true;
                     comboBorderImageL.sprite = comboBorderGlow;

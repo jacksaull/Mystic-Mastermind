@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseComboSpell : MonoBehaviour
 {
     public string spellName; //Name of Spell for UI purposes
-
+    public bool isDisabled; //Checks whether the Spell is disabled for the current Level
     public string element1; //First element of Combo Spell
     public string element2; //Second element of Combo Spell
 

@@ -68,5 +68,7 @@ MonoBehaviour:
   element1: 
   element2: 
   player: {fileID: 0}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 25ea93ea0d62f5443bd338e21fac6b55, type: 3}
   spellManager: {fileID: 0}
+  lookDirection: {fileID: 0}
+  Boulder: {fileID: 6630652416448890360, guid: 1f373639789d2bf498b4a0472874f8b7, type: 3}
