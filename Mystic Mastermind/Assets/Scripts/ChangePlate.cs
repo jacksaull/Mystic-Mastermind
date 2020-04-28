@@ -17,6 +17,7 @@ public class ChangePlate : MonoBehaviour
     public int eSpell; //Secondary Spell Slot Array Value
     public bool[] spellDisabled;
     public bool[] comboSpellDisabled;
+    public bool saveSpot;
 
     public ComboSpellManager comboSpellManager;
     void Start()
@@ -32,46 +33,52 @@ public class ChangePlate : MonoBehaviour
     void Update()
     {
 
-
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player" && activated == false)
         {
-            magicAnimation.SetBool("isActive", true);
-            audioSource.Play();
-            activated = true;
+                magicAnimation.SetBool("isActive", true);
+                audioSource.Play();
+                activated = true;
 
-            health.spawnPoint = spawnPoint;
-
-            spellManager.qSpellNum = qSpell;
-            spellManager.qImage.sprite = spellManager.icons[qSpell];
-            spellManager.qName.text = spellManager.spells[qSpell].spellName;
-            spellManager.qGem.GetComponent<MeshRenderer>().material = spellManager.spells[qSpell].colour;
-
-
-            spellManager.eSpellNum = eSpell;
-            spellManager.eImage.sprite = spellManager.icons[eSpell];
-            spellManager.eName.text = spellManager.spells[eSpell].spellName;
-            spellManager.eGem.GetComponent<MeshRenderer>().material = spellManager.spells[eSpell].colour;
-
-            if (secondaryDisabled)
+            if (saveSpot == false)
             {
-                spellManager.eGem.GetComponent<MeshRenderer>().material = spellManager.recharge;
-                spellManager.eName.text = "Disable";
-                spellManager.eImage.sprite = spellManager.disabledImage;
-            }
+                health.spawnPoint = spawnPoint;
 
-            spellManager.secondaryDisabled = secondaryDisabled;
-            for (int i = 0; i < spellManager.spells.Length; i++)
-            {
-                spellManager.spells[i].isDisabled = spellDisabled[i];
+                spellManager.qSpellNum = qSpell;
+                spellManager.qImage.sprite = spellManager.icons[qSpell];
+                spellManager.qName.text = spellManager.spells[qSpell].spellName;
+                spellManager.qGem.GetComponent<MeshRenderer>().material = spellManager.spells[qSpell].colour;
+
+
+                spellManager.eSpellNum = eSpell;
+                spellManager.eImage.sprite = spellManager.icons[eSpell];
+                spellManager.eName.text = spellManager.spells[eSpell].spellName;
+                spellManager.eGem.GetComponent<MeshRenderer>().material = spellManager.spells[eSpell].colour;
+
+                if (secondaryDisabled)
+                {
+                    spellManager.eGem.GetComponent<MeshRenderer>().material = spellManager.recharge;
+                    spellManager.eName.text = "Disable";
+                    spellManager.eImage.sprite = spellManager.disabledImage;
+                }
+
+                spellManager.secondaryDisabled = secondaryDisabled;
+                for (int i = 0; i < spellManager.spells.Length; i++)
+                {
+                    spellManager.spells[i].isDisabled = spellDisabled[i];
+                }
+                for (int i = 0; i < comboSpellManager.comboSpells.Length; i++)
+                {
+                    comboSpellManager.comboSpells[i].isDisabled = comboSpellDisabled[i];
+                }
+                comboSpellManager.CheckComboSpell();
             }
-            for (int i = 0; i < comboSpellManager.comboSpells.Length; i++)
+            else
             {
-                comboSpellManager.comboSpells[i].isDisabled = comboSpellDisabled[i];
+                health.spawnPoint = spawnPoint;
             }
-            comboSpellManager.CheckComboSpell();
         }
     }
 }
