@@ -12,6 +12,7 @@ TagManager:
   - AudioManager
   - FireTargetObjective
   - Combo Spell Manager
+  - Boulder
   layers:
   - Default
   - TransparentFX
