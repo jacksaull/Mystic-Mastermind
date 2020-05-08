@@ -33507,6 +33507,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 178017916}
     m_Modifications:
+    - target: {fileID: 9072506053361454244, guid: 3b392ca94ca3bae4988711e419094ac3,
+        type: 3}
+      propertyPath: level
+      value: Puzzle Room
+      objectReference: {fileID: 0}
     - target: {fileID: 9072506053361454246, guid: 3b392ca94ca3bae4988711e419094ac3,
         type: 3}
       propertyPath: m_LocalPosition.x
