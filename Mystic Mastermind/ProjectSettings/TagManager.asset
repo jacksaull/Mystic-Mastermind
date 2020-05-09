@@ -13,6 +13,7 @@ TagManager:
   - FireTargetObjective
   - Combo Spell Manager
   - Boulder
+  - Puzzle Door
   layers:
   - Default
   - TransparentFX
