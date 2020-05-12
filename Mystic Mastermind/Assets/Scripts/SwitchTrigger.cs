@@ -22,9 +22,9 @@ public class SwitchTrigger : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("t") && cooldown == false)
+        if (inRange == true)
         {
-            if (inRange == true)
+            if (Input.GetKeyDown("t") && cooldown == false)
             {
                 puzzleDoor.source.Play();
                 cooldown = true;
@@ -37,16 +37,17 @@ public class SwitchTrigger : MonoBehaviour
                 {
                     puzzleDoorLayerNum = 0;
                 }
-            }
-            if (puzzleDoorLayerNum == 0)
-            {
-                inPlace = true;
-                puzzleDoor.correctPlacement++;
-            }
-            else if (puzzleDoorLayerNum != 0 && inPlace == true)
-            {
-                puzzleDoor.correctPlacement--;
-                inPlace = false;
+
+                if (puzzleDoorLayerNum == 0)
+                {
+                    inPlace = true;
+                    puzzleDoor.correctPlacement++;
+                }
+                else if (puzzleDoorLayerNum != 0 && inPlace == true)
+                {
+                    puzzleDoor.correctPlacement--;
+                    inPlace = false;
+                }
             }
         }
     }
